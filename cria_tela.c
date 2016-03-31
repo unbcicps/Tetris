@@ -25,7 +25,7 @@ return matriz[l][c];
 
 int main(){
 
-cria_tela(0,0,15,25);
+cria_tela(0,0,25,15);
 
 return 0;
 }
