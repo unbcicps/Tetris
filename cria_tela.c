@@ -1,18 +1,17 @@
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
-	void mostra_tela(){
-		char c;
-		do{
-			printf("\tClique c ou C Para começar\n");
-			scanf("%c",&c);
-			switch(c){
-			case 'c':
-			case 'C':printf("\tLet's Begin\n");
-				break;
-			default:printf("\tTente outra vez\n");
-				}
-		}while(c != 'C' || c!= 'c');
+	void mostra_tela(void *cria_tela){
+	
+		
+			printf("\tAperte em qualquer tecla e Enter Para começar\n");
+			char Enter;
+			Enter = getchar();
+			if(Enter != '\n'){
+			
+			}
+		
+		
 
 	}
 
@@ -38,7 +37,7 @@
 
 	int main(){
 	
-	mostra_tela();
+	mostra_tela(*cria_tela);
 	cria_tela(0,0,25,15);
 
 	return 0;
