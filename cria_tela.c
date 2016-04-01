@@ -2,18 +2,17 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 	void mostra_tela(void *cria_tela){
-	
-		
-			printf("\tAperte em qualquer tecla e Enter Para começar\n");
-			char Enter;
-			Enter = getchar();
-			if(Enter != '\n'){
 			
-			}
-		
-		
+			char Enter;
+			do{
+				printf("\tAperte em qualquer tecla e/ou Enter Para começar\n");
+					Enter = getchar();
+						printf("\n");
+			}while(Enter != '\n');						
+/****************************************Fazer (Função que dá GAME OVER ao perder o jogo)**********************************************/
 
 	}
+/****************************************Fazer (Função do TEMPO)***********************************************************************/
 
 	void *cria_tela(int l,int c,int L, int C){
 	char matriz[L][C];
