@@ -13,7 +13,7 @@ char matriz[L][C];
 
 	for(l=0;l!=L;l++){
 		for(c=0;c!=C;c++){
-			if((l==0)||(l==L-1)||(c==0)||(c==C-1)){
+			if((l==0)||(l==L-1)||(c==0)||(c==C-1)||(l==4)){
 				printf("%c ",matriz[l][c]);
 	}else{
 	printf("  ");
