@@ -1,9 +1,15 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+void mostra_tela(){
+	int  c;
+	do{printf("HELLOOOO");
+	c = getchar();
+	}while(c != getchar);
 
+}
 
-int cria_tela(int l,int c,int L, int C){
+void *cria_tela(int l,int c,int L, int C){
 char matriz[L][C];
 	for(l=0;l!=L;l++){
 		for(c=0;c!=C;c++){
@@ -20,13 +26,13 @@ char matriz[L][C];
 }}
 printf("\n");
 }
-return matriz[l][c];
+return 0;
 }
 
 int main(){
-
+mostra_tela();
 cria_tela(0,0,25,15);
 
 return 0;
 }
-/*IMPRIME A MOLDURA DA MATRIZ NA TELA*/
+
