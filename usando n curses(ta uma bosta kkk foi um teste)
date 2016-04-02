@@ -1,0 +1,73 @@
+#include <string.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <ncurses.h>
+
+	void *cria_tela(int l,int c,int L, int C){
+	
+
+	char matriz[L][C];
+				
+		for(l=0;l!=L;l++){
+			for(c=0;c!=C;c++){
+				matriz[l][c] = 'o';
+		}
+	}
+		initscr();
+		refresh();
+		for(l=0;l!=L;l++){
+			for(c=0;c!=C;c++){
+				if((l==0)||(l==L-1)||(c==0)||(c==C-1)||(l==4)){
+					
+				printw("%c ",matriz[l][c]);
+			}else{
+				
+				printw("  ");
+		}}
+			printw("\n");
+		}
+
+		
+			getch();
+	
+/*move cursor*/
+	int sair = 0, x=3 ,y=3;
+	while(sair == 0){
+	switch(getch()){
+	case 'a': x--; break;
+	case 'd': x++; break;
+	case 'w': y--; break;
+	case 's': y++;break;
+	case 'q': x--;sair =1;break;
+	}
+	mvaddch(y,x,'x');
+
+	endwin();
+}
+	
+	return 0;
+	}
+
+	void *mostra_tela(void *cria_tela){
+					
+			initscr();
+			start_color();
+			init_pair(1,COLOR_RED,COLOR_BLACK);
+			attron(COLOR_PAIR(1));
+			printw("DESEJA INICIAR? APERTE QUALQUER TECLA");
+			attroff(COLOR_PAIR(1));
+			refresh();			
+			noecho();			
+			getch();			
+			noecho();	
+			/*Fazer (Função que dá GAME OVER ao perder o jogo)*/
+	}
+				/*fazer (Função do TEMPO)*/
+	
+	
+
+	int main(){
+	mostra_tela(*cria_tela);
+	cria_tela(0,0,25,15);	
+	return 0;
+	}
