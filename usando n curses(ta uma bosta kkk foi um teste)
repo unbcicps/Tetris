@@ -26,11 +26,9 @@
 		}}
 			printw("\n");
 		}
-
-		
 			getch();
 	
-/*move cursor*/
+/*move cursos*/
 	int sair = 0, x=3 ,y=3;
 	while(sair == 0){
 	switch(getch()){
@@ -54,10 +52,9 @@
 			start_color();
 			init_pair(1,COLOR_RED,COLOR_BLACK);
 			attron(COLOR_PAIR(1));
-			printw("DESEJA INICIAR? APERTE QUALQUER TECLA");
+			mvprintw(15,25,"DESEJA INICIAR? APERTE QUALQUER TECLA");
 			attroff(COLOR_PAIR(1));
 			refresh();			
-			noecho();			
 			getch();			
 			noecho();	
 			/*Fazer (Função que dá GAME OVER ao perder o jogo)*/
