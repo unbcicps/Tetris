@@ -7,11 +7,11 @@ char tabuleiro[15][27] ;
 
 void fazer_campo(){
 	int i;
-    strcpy(tabuleiro[0],  "________________________");
+        strcpy(tabuleiro[0],  "________________________");
 	strcpy(tabuleiro[1],  "|                       |");
 	strcpy(tabuleiro[2],  "|                       |");	
 	strcpy(tabuleiro[3],  "|                       |");
-	strcpy(tabuleiro[4],  "|                       |");
+	strcpy(tabuleiro[4],  "|_ _ _ _ _ _ _ _ _ _ _ _|");
 	strcpy(tabuleiro[5],  "|                       |");
 	strcpy(tabuleiro[6],  "|                       |");
 	strcpy(tabuleiro[7],  "|                       |");
