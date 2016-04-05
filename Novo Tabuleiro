@@ -1,0 +1,58 @@
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+#include <ncurses.h>
+char tabuleiro[26][18] ;
+
+void fazer_campo(){
+	int i;
+    strcpy(tabuleiro[0],  "_________________");
+	strcpy(tabuleiro[1],  "|               |");
+	strcpy(tabuleiro[2],  "|               |");	
+	strcpy(tabuleiro[3],  "|               |");
+	strcpy(tabuleiro[4],  "|               |");
+	strcpy(tabuleiro[5],  "|               |");
+	strcpy(tabuleiro[6],  "|               |");
+	strcpy(tabuleiro[7],  "|               |");
+	strcpy(tabuleiro[8],  "|               |");
+	strcpy(tabuleiro[9],  "|               |");
+	strcpy(tabuleiro[10], "|               |");
+	strcpy(tabuleiro[11], "|               |");
+	strcpy(tabuleiro[12], "|               |");
+	strcpy(tabuleiro[13], "|               |");
+	strcpy(tabuleiro[14], "|               |");
+	strcpy(tabuleiro[15], "|               |");
+	strcpy(tabuleiro[16], "|               |");
+	strcpy(tabuleiro[17], "|               |");
+	strcpy(tabuleiro[18], "|               |");
+	strcpy(tabuleiro[19], "|               |");
+	strcpy(tabuleiro[20], "|               |");
+	strcpy(tabuleiro[21], "|               |");
+	strcpy(tabuleiro[22], "|               |");
+	strcpy(tabuleiro[23], "|               |");
+	strcpy(tabuleiro[24], "|               |");
+	strcpy(tabuleiro[25], "|_______________|");
+	for(i=0;i<27;i++){
+		printf("%s", tabuleiro[i]);
+	   	printf("\n");
+	 
+	}
+	
+}
+
+int main(){
+		
+			initscr();
+			start_color();
+			init_pair(1,COLOR_RED,COLOR_BLACK);
+			attron(COLOR_PAIR(1));
+			mvprintw(15,25,"DESEJA INICIAR? APERTE QUALQUER TECLA");
+			attroff(COLOR_PAIR(1));
+			refresh();			
+			getch();			
+			noecho();	
+			endwin();
+	fazer_campo();
+	return 0;
+}
