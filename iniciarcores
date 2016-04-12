@@ -1,0 +1,12 @@
+//Inicializa as cores
+void init_colors(void)
+{
+  start_color();
+  init_pair(PC_CELLI, COLOR_CYAN, COLOR_BLACK);//Variáveis de outras peças , pois tirá-las causa bug :(;;;; 
+  init_pair(PC_CELLJ, COLOR_BLUE, COLOR_BLACK);
+  init_pair(PC_CELLL, COLOR_WHITE, COLOR_BLACK);
+  init_pair(PC_CELLO, COLOR_YELLOW, COLOR_BLACK);
+  init_pair(PC_CELLS, COLOR_GREEN, COLOR_BLACK);
+  init_pair(PC_CELLT, COLOR_MAGENTA, COLOR_BLACK);
+  init_pair(PC_CELLZ, COLOR_RED, COLOR_BLACK);
+}
