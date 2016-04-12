@@ -1,4 +1,10 @@
 ////TELA______________________________________________________________________________________
+#include <stdio.h>
+#include <ncurses.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <time.h>  
 int main(int argc, char **argv)
 {
   tetris_game *tg;
