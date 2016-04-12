@@ -1,0 +1,305 @@
+#define TYPE_TO_CELL(x) ((x)+1)
+
+#define PC_EMPTY_STR " "
+#define PC_BLOCK_STR "\u2588"
+
+#define PC_IS_EMPTY(x) ((x) == PC_EMPTY)
+#define PC_IS_FILLED(x) (!PC_IS_EMPTY(x))
+
+#define TETRIS 4 	
+
+#define linha 7
+
+#define coluna 4
+
+#define Level_Maximo 19
+#define Linhas_por_Nivel 15
+#define COLS_PER_CELL 2
+
+#define ADD_BLOCK(w,x) waddch((w),' '|A_REVERSE|COLOR_PAIR(x));     \
+                       waddch((w),' '|A_REVERSE|COLOR_PAIR(x))
+#define ADD_EMPTY(w) waddch((w), ' '); waddch((w), ' ')
+
+
+
+/* PARA JOGAR USE AS SETAS, APERTE Q E SAIA DO JOGO, APERTE S SALVE E  SAI E APERTE P E PAUSA O JOGO */
+
+
+
+typedef enum {
+  PC_EMPTY, PC_CELLI, PC_CELLJ, PC_CELLL, PC_CELLO, PC_CELLS, PC_CELLT, PC_CELLZ
+} tetris_cell;
+
+typedef enum {
+  PEC_I, PEC_J, PEC_L, PEC_O, PEC_S, PEC_T, PEC_Z
+} tetris_type;
+
+
+typedef struct {
+  int row;
+  int col;
+} tetris_localizacao;
+
+
+typedef struct {
+  int typ;
+  int ori;
+  tetris_localizacao loc;
+} tetris_block;
+
+typedef enum {
+  esquerda, direita, cloc, contar, soltar, segurar, none
+} tetris_move;
+
+
+typedef struct {
+  
+  int rows;
+  int cols;
+  char *tabuleiro;
+  
+  int pontos;
+  int level;
+
+  tetris_block cair;
+  tetris_block proximo;
+  tetris_block guardado;
+
+  
+  int linhas_faltando;
+} tetris_game;
+
+
+extern tetris_localizacao pecas[linha][coluna][TETRIS];
+
+#define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
+#define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
+
+
+
+tetris_localizacao peca[linha][coluna][TETRIS] = {
+	//PC_1
+  {
+   {{0, 2}, {1, 2}, {2, 2}, {3, 2}},
+  },
+   //PC_2
+     {
+   
+   {{3, 0}, {3, 1}, {3, 2}, {3, 3}},
+},
+
+//PC_3
+{{  {1, 1}, {1, 1}, {1, 2}, {1, 3}},
+  },
+     
+
+ 
+};
+void sleep_milli(int milliseconds)
+{
+  struct timespec ts;
+  ts.tv_sec = 0;
+  ts.tv_nsec = milliseconds * 1000 * 1000;
+  nanosleep(&ts, NULL);
+}
+
+char get(tetris_game *obj, int row, int column)
+{
+  return obj->tabuleiro[obj->cols * row + column];
+}
+
+
+static void set(tetris_game *obj, int row, int column, char value)
+{
+  obj->tabuleiro[obj->cols * row + column] = value;
+}
+
+
+bool checar(tetris_game *obj, int row, int col)
+{
+  return 0 <= row && row < obj->rows && 0 <= col && col < obj->cols;
+}
+
+// Colocar um bloco no campo
+static void put(tetris_game *obj, tetris_block block)
+{
+  int i;
+  for (i = 0; i < TETRIS; i++) {
+    tetris_localizacao cell = peca[block.typ][block.ori][i];
+    set(obj, block.loc.row + cell.row, block.loc.col + cell.col,
+           TYPE_TO_CELL(block.typ));
+  }
+}
+
+// Tirar um bloco do campo
+static void remover(tetris_game *obj, tetris_block block)
+{
+  int i;
+  for (i = 0; i < TETRIS; i++) {
+    tetris_localizacao cell = peca[block.typ][block.ori][i];
+    set(obj, block.loc.row + cell.row, block.loc.col + cell.col, PC_EMPTY);
+  }
+}
+
+//Checar se um bloco pode ser posto no campo
+static bool encaixe(tetris_game *obj, tetris_block block)
+{
+  int i, r, c;
+  for (i = 0; i < TETRIS; i++) {
+    tetris_localizacao cell = peca[block.typ][block.ori][i];
+    r = block.loc.row + cell.row;
+    c = block.loc.col + cell.col;
+    if (!checar(obj, r, c) || PC_IS_FILLED(get(obj, r, c))) {
+      return false;
+    }
+  }
+  return true;
+}
+
+//Escolhe uma peça aleatória
+static int random_peca(void) {
+  return rand() % linha;
+}
+
+//Cria um novo Bloco
+static void nova_cair(tetris_game *obj)
+{
+  
+  obj->cair = obj->proximo;
+  obj->proximo.typ = random_peca();
+  obj->proximo.ori = 0;
+  obj->proximo.loc.row = 0;
+  obj->proximo.loc.col = obj->cols/2 - 2;
+}
+
+//Move os Blocos entre esquerda e direita
+static void movimentar(tetris_game *obj, int direction)
+{
+  remover(obj, obj->cair);
+  obj->cair.loc.col += direction;
+  if (!encaixe(obj, obj->cair)) {
+    obj->cair.loc.col -= direction;
+  }
+  put(obj, obj->cair);
+}
+
+static void cai(tetris_game *obj)
+{
+  remover(obj, obj->cair);
+  while (encaixe(obj, obj->cair)) {
+    obj->cair.loc.row++;
+  }
+  obj->cair.loc.row--;
+  put(obj, obj->cair);
+  nova_cair(obj);
+}
+
+static void hold(tetris_game *obj)
+{
+  remover(obj, obj->cair);
+  if (obj->guardado.typ == -1) {
+    obj->guardado = obj->cair;
+    nova_cair(obj);
+  } else {
+    int typ = obj->cair.typ, ori = obj->cair.ori;
+    obj->cair.typ = obj->guardado.typ;
+    obj->cair.ori = obj->guardado.ori;
+    obj->guardado.typ = typ;
+    obj->guardado.ori = ori;
+    while (!encaixe(obj, obj->cair)) {
+      obj->cair.loc.row--;
+    }
+  }
+  put(obj, obj->cair);
+}
+
+//Realiza a movimentação
+static void handle_move(tetris_game *obj, tetris_move move)
+{
+  switch (move) {
+  case esquerda:
+    movimentar(obj, -1);
+    break;
+  case direita:
+    movimentar(obj, 1);
+    break;
+  case soltar:
+    cai(obj);
+    break;
+  case segurar:
+    hold(obj);
+    break;
+  default:
+    break;
+  }
+}
+
+//Returna verdadeiro se a linha estiver cheia
+static bool linha_cheia(tetris_game *obj, int i)
+{
+  int j;
+  for (j = 0; j < obj->cols; j++) {
+    if (PC_IS_EMPTY(get(obj, i, j)))
+      return false;
+  }
+  return true;
+}
+
+static void shift_lines(tetris_game *obj, int r)
+{
+  int i, j;
+  for (i = r-1; i >= 0; i--) {
+    for (j = 0; j < obj->cols; j++) {
+      set(obj, i+1, j, get(obj, i, j));
+      set(obj, i, j, PC_EMPTY);
+    }
+  }
+}
+
+//Procura linhas chias e as remove
+static int checa_linha(tetris_game *obj)
+{
+  int i, nlines = 0;
+  remover(obj, obj->cair); 
+
+  for (i = obj->rows-1; i >= 0; i--) {
+    if (linha_cheia(obj, i)) {
+      shift_lines(obj, i);
+      i++; 
+      nlines++;
+    }
+  }
+  put(obj, obj->cair); 
+  return nlines;
+}
+
+//Atualiza o placar
+static void atualiza_placar(tetris_game *obj, int lines_cleared)
+{
+  static int line_multiplier[] = {0, 40, 100, 300, 1200};
+  obj->pontos += line_multiplier[lines_cleared] * (obj->level + 1);
+  if (lines_cleared >= obj->linhas_faltando) {
+    obj->level = MIN(Level_Maximo, obj->level + 1);
+    lines_cleared -= obj->linhas_faltando;
+    obj->linhas_faltando = Linhas_por_Nivel - lines_cleared;
+  } else {
+    obj->linhas_faltando -= lines_cleared;
+  }
+}
+
+//Returna verdadeiro se o jogo terminou
+static bool jogo_terminou(tetris_game *obj)
+{
+  int i, j;
+  bool over = false;
+  remover(obj, obj->cair);
+  for (i = 0; i < 2; i++) {
+    for (j = 0; j < obj->cols; j++) {
+      if (PC_IS_FILLED(get(obj, i, j))) {
+        over = true;
+      }
+    }
+  }
+  put(obj, obj->cair);
+  return over;
+}
