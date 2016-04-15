@@ -1,0 +1,256 @@
+/*****************************************************************************************************************/
+void adicionar_suite(void);
+/**********************************         Teste do Modulo Peça    **********************************************/
+/*Testa se a função funciona*/
+void teste_DT_sleep_milli_Checamilli(void){
+	void *resultado;
+	resultado = sleep_milli; 
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Testa se a função não retorna nada*/
+void teste_DT_get_Checaget(void){
+	void *resultado;
+	resultado = get; 
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Checa se a função está funcionando*/
+void teste_DT_set_Checaset(void){
+	static void *resultado;
+	resultado = set; 
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Testa se a função checar é verdadeira*/
+void teste_DT_checar_Checachecar(void){
+	bool resultado;
+	resultado = checar;
+	resultado = true; 
+	CU_ASSERT(resultado);
+}
+/*Testa se a função checar é falsa*/
+void teste_DT_checar_Checachecar2(void){
+	bool resultado;
+	resultado = checar;
+	resultado = false; 
+	CU_ASSERT(!resultado);
+}
+
+/*Testa se a função put retorna 0*/
+void teste_DT_put_Checaput(void){
+	static void *resultado;
+	resultado = put;
+	CU_ASSERT_EQUAL( !resultado,0);
+}
+
+/*Testa se a função remover retorna 0*/
+void teste_DT_remover_Checaremover(void){
+	static void *resultado;
+	resultado = remover;
+	CU_ASSERT_EQUAL( !resultado,0);
+}
+
+/*Testa se a função booleana retorna verdadeiro*/
+void teste_DT_random_peca_Checarrandom_peca(void){
+	static void *resultado;
+	resultado = random_peca;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Testa se a função booleana retorna verdadeiro*/
+void teste_DT_encaixe_Checarencaixe(void){
+	static bool resultado;
+	resultado = encaixe;
+	resultado = true;
+	CU_ASSERT( resultado );
+}
+/*Testa se a função booleana retorna falso*/
+void teste_DT_encaixe_Checarencaixe2(void){
+	static bool resultado;
+	resultado = encaixe;
+	resultado = false;
+	CU_ASSERT(!resultado);
+
+}
+
+/*Testa se a função funciona retornando 0*/
+void teste_DT_nova_cair_Checanova_cair(void){
+	static void *resultado;
+	resultado = nova_cair;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Olha se a função está funcionando e não retorna 0*/
+void teste_DT_movimentar_Checamovimentar(void){
+	static void *resultado;
+	resultado = movimentar;
+	CU_ASSERT_EQUAL(!resultado ,0);
+}
+
+
+/*Testa se a função funciona testando se retorna 0*/
+
+void teste_DT_cai_Checacai(void){
+	static void *resultado;
+	resultado = cai;
+	CU_ASSERT_EQUAL( !resultado,0);
+}
+
+/*Checa se a função não retorna nada*/
+void teste_DT_hold_Checahold(void){
+	static void *resultado;
+	resultado = hold;
+	CU_ASSERT_EQUAL(!resultado,0);
+}
+
+
+/*Checa se a função handle_move funciona*/
+void teste_DT_handle_move_Checahandle_move(void){
+	static void *resultado;
+	resultado = handle_move;
+	CU_ASSERT_EQUAL(!resultado,0);
+}
+
+/*checa se a função funciona e retorna verdadeira*/
+void teste_DT_linha_cheia_Checalinha_cheia1(void){
+	static bool resultado;
+	resultado = linha_cheia;
+	resultado = true;
+	CU_ASSERT( resultado );
+}
+
+/*checa se a função funciona e retorna verdadeira*/
+void teste_DT_linha_cheia_Checalinha_cheia2(void){
+	static bool resultado;
+	resultado = linha_cheia;
+	resultado = false;
+	CU_ASSERT( !resultado );
+}
+
+
+
+/*Testa se a função está funcionando e não retorna nada*/
+void teste_DT_shift_lines_Checashift_lines(void){
+	static void *resultado;
+	resultado = shift_lines;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Olha se o programa retorna 0*/
+void teste_DT_checa_linha_Checacheca_linha(void){
+	static void *resultado;
+	resultado = checa_linha;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Testa se a função está funcionando e não retorna nada*/
+void teste_DT_atualiza_placar_Checaatualiza_placar(void){
+	static void *resultado;
+	resultado = atualiza_placar;
+	CU_ASSERT_EQUAL( !resultado ,0);
+}
+
+/*Checa se o resultado booleano é verdadeiro caso jogo tenha terminado*/
+void teste_DT_jogo_terminou_Checajogo_terminou(void){
+	static bool resultado;
+	resultado =jogo_terminou;
+	resultado = true;
+	CU_ASSERT( resultado );
+}
+/*Checa se o resultado booleano é falso caso jogo não tenha terminado*/
+void teste_DT_jogo_terminou_Checajogo_terminou2(void){
+	static bool resultado;
+	resultado =jogo_terminou;
+	resultado = false;
+	CU_ASSERT( !resultado );
+}
+/**********************************         Teste do Modulo Engine **********************************************/
+/*Checa se a função de iniciar está funcionando e não retorna nada*/
+void teste_DT_iniciar_Checainiciar(void){
+	void *resultado;
+	resultado = iniciar;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/**/
+void teste_DT_apagar_Checaapagar(void){
+	void *resultado;
+	resultado = apagar;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Olha se a função de printar o tabuleiro funciona e nao retorna 0*/
+void teste_DT_print_Checaprint(void){
+	void *resultado;
+	resultado = print;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Ve se a função que mostra o tabuleiro na tela funciona*/
+void teste_DT_mostra_tabuleiro_Checamostra_tabuleiro(void){
+	void *resultado;
+	resultado = mostra_tabuleiro;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Diz se a função que mostra a peça funciona*/
+void teste_DT_mostra_peca_Checamostra_peca(void){
+	void *resultado;
+	resultado = mostra_peca;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/*Testa se a função que mostra a pontuação não retorna 0*/
+void teste_DT_mostra_pontuacao_Checamostra_pontuacao(void){
+	void *resultado;
+	resultado =mostra_pontuacao;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*Testa se o salvar jogo funciona*/
+void teste_DT_salva_e_sai_Checasalva_e_sai(void){
+	void *resultado;
+	resultado =salva_e_sai;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+/*checa se a função de iniciar cores funiona*/
+void teste_DT_init_colors_Checainit_colors(void){
+	void *resultado;
+	resultado =init_colors;
+	CU_ASSERT_EQUAL( !resultado,0 );
+}
+
+/**********************************        Adiciona as Suites      ************************************************/
+void  adicionar_suite(void){
+	CU_pSuite suite;
+	/*Cria uma suite que conterá todos os testes*/
+
+	/*************************          Teste do Modulo Peça            ************************/
+	suite = CU_add_suite("Testes do Trabalho Tetris",NULL,NULL);
+	CU_ADD_TEST(suite, teste_DT_sleep_milli_Checamilli);
+	CU_ADD_TEST(suite, teste_DT_get_Checaget);
+	CU_ADD_TEST(suite, teste_DT_set_Checaset);
+	CU_ADD_TEST(suite, teste_DT_checar_Checachecar);	
+	CU_ADD_TEST(suite, teste_DT_checar_Checachecar2);
+	CU_ADD_TEST(suite, teste_DT_put_Checaput);
+	CU_ADD_TEST(suite, teste_DT_remover_Checaremover);
+	CU_ADD_TEST(suite, teste_DT_encaixe_Checarencaixe);    
+	CU_ADD_TEST(suite, teste_DT_random_peca_Checarrandom_peca);
+	CU_ADD_TEST(suite, teste_DT_encaixe_Checarencaixe2);
+	CU_ADD_TEST(suite, teste_DT_nova_cair_Checanova_cair);
+	CU_ADD_TEST(suite, teste_DT_movimentar_Checamovimentar);
+	CU_ADD_TEST(suite, teste_DT_cai_Checacai);
+	CU_ADD_TEST(suite, teste_DT_hold_Checahold);
+	CU_ADD_TEST(suite, teste_DT_handle_move_Checahandle_move);
+	CU_ADD_TEST(suite, teste_DT_linha_cheia_Checalinha_cheia1);
+	CU_ADD_TEST(suite, teste_DT_linha_cheia_Checalinha_cheia2);
+	CU_ADD_TEST(suite, teste_DT_shift_lines_Checashift_lines);
+	CU_ADD_TEST(suite, teste_DT_checa_linha_Checacheca_linha);
+	CU_ADD_TEST(suite, teste_DT_atualiza_placar_Checaatualiza_placar);
+	CU_ADD_TEST(suite, teste_DT_jogo_terminou_Checajogo_terminou);
+	CU_ADD_TEST(suite, teste_DT_jogo_terminou_Checajogo_terminou2);
+	
+	/*************************          Teste do Modulo Engine            ************************/
+	CU_ADD_TEST(suite, teste_DT_iniciar_Checainiciar);
+	CU_ADD_TEST(suite, teste_DT_apagar_Checaapagar);
+	CU_ADD_TEST(suite, teste_DT_print_Checaprint);
+	CU_ADD_TEST(suite, teste_DT_mostra_tabuleiro_Checamostra_tabuleiro);
+	CU_ADD_TEST(suite, teste_DT_mostra_peca_Checamostra_peca);
+	CU_ADD_TEST(suite, teste_DT_mostra_pontuacao_Checamostra_pontuacao);
+	CU_ADD_TEST(suite, teste_DT_salva_e_sai_Checasalva_e_sai);
+	CU_ADD_TEST(suite, teste_DT_init_colors_Checainit_colors);
+}
