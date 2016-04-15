@@ -1,0 +1,50 @@
+					Documentação
+
+Compononentes do grupo:
+	Pedro Ivo Araújo – 15/0020121
+	Vitor Ribeiro Custodio – 15/0023502
+	Yago Pablo Lourenço Vaz – 15/0023928
+
+PEÇAS : 
+
+-  O módulo peça é composto por 6 estruturas do tipo Struct e por 18 funções;
+-  Os tipos Struct são usados para definir os formatos das peças que serão usados, as especificações de localização de cada peça / bloco , as direções que podem ser movidas e as estruturas que compõe o tabuleiro do jogo;
+-  As peças são feitas a partir de strings , sendo necessário saber a localização da linha e coluna que ela ocupará ;
+-  A função get é responsável por retornar um bloco na linha e posição recebidas;
+-  A função set posiciona o bloco na localização desejada ;
+-  A função checar é responsável pela verificação de que a localização do bloco está dentro dos limites do tabuleiro ;
+-  A função put coloca um bloco no tabuleiro ;
+-  A função remover é responsável por remover um bloco do campo ;
+-  A função encaixe é atribuída o dever de checar se um bloco pode ser colocado em jogo ;
+-  A função random_peca retorna uma peça aleatória ;
+-  A função novo_cair criar um novo bloco e chama pelo próximo bloco aleatório que será despejado em campo;
+-  A função movimentar é atribuída o dever de movimentar o bloco entre esquerda e direita;
+-  A função cai é tem como objetivo pegar o bloco do campo e colocá-lo no fim do tabuleiro;
+-  A função hold tem a funcionalidade de trocar um bloco com outro que está no buffer ;
+-  A função handle_move realiza a movimentação especificada pela entrada do usuário , que é atribuída as setas ;
+-  A função linha_cheia retorna um valor booleano caso a linha conferida esteja cheia;
+-  A função shift_lines limpa o tabuleiro quando está cheio;
+-  A função checa_linha tem a função de procurar linhas cheias, removê-las , e retornar a quantidade de linhas vazias ;
+-  A função atualiza_placar tem como responsabilidade o ajuste de pontos , quando cada linha é completada;
+-  A função jogo_terminou retorna um valor booleano informando o fim ou não da partida;
+
+
+Engine:
+
+-  O módulo engine tem a responsabilidade  de criar e imprimir as condições impostas ao jogo, como tabuleiro , cores , placar , e tem funcionalidade de salvar o jogo na condição desejada ;
+-  A função tg_tick têm as funcionalidades de checar se o jogo continua sendo possível , de chamar a função para checar e atualizar o placar e de chamar as funções de movimentação das peças ;
+-  A função iniciar é responsável por apontar para a criação do tabuleiro e pela checagem de linhas vazias ;
+-  A função apagar apaga o tabuleiro no fim do jogo;
+-  A função delete tem a responsabilidade de apagar as peças do jogo;
+-  A função salvar criar um arquivo onde é salvo o seu jogo;
+-  A função print  tem a responsabilidade de imprimir o tabuleiro no campo;
+-  A função mostra_tabuleiro utiliza de funções do ncurses para personalizar e melhorar o tabuleiro
+-  A função mostra_peca aponta para a criação das peças do jogo;
+-  A função mostra_pontuacao é responsável por retornar a pontuação do jogo;
+-  A função salva_e_sai cria um arquivo onde o jogo é salvo e logo depois o jogo é ejetado ;
+-  A função init_color é responsável por dar cores as peças do jogo;
+
+
+Tela:
+
+-  O módulo tela é onde a função main se encontra , nele é declarado as bibliotecas usadas para a criação do código , assim como retorna os dois módulos descritos acima. As suas funcionalidades é  garantir que as funções para o funcionamento do jogo serão chamadas , assim como a realizar um checagem na entrada do usuário para que as teclas certas sejam usadas com suas definidas usabilidades. 
