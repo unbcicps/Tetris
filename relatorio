@@ -1,0 +1,59 @@
+					Integrantes do grupo: 
+
+Yago Pablo Lourenço Vaz
+Matrícula: 15/0023928 
+Email: yagoplv@hotmail.com
+Usuário no GitHub: yagolourenco
+
+Vítor Ribeiro Custódio
+Matrícula: 15/0023502
+Email: vitorribeiro221196@gmail.com
+Usuário no GitHub: VitorRibeiroCustodio22
+
+Pedro Ivo Araújo
+Matrícula: 15/0020121
+Email: pedrokka.maggot@gmail.com
+Usuário no GitHub: PedroMaggot
+
+Observação: O usuário gintatei que consta em nosso trabalho abandonou o curso de Ciência da Computação e por isso não consta mais no trabalho.
+
+Link do GitHub para acesso ao trabalho 1 “Tetris”:
+https://github.com/unbcicps/Tetris 
+
+	Neste local foram postados vários códigos, que ajudaram a formar, criar e chegar ao ponto final de conclusão do trabalho.
+
+	No total foram separados em três módulos, cada um com sua função, feito por um integrante diferente: 
+
+	Módulo 1 Tela:
+		Módulo consta no github como: modulotela.c.
+
+	Módulo esse responsável por criar toda a tela e o campo de jogo e atualizar a cada 
+movimento feito na peça.
+	Feito pelo integrante do grupo Pedro Ivo Araújo.
+
+	Módulo 2 Peças:
+		Módulo consta no github como: modulopecas.c.
+
+	Este módulo é responsável por criar as peças do jogo e realizar seus movimentos dentro da tela(matriz). 
+	Feito pelo integrante Vítor Ribeiro Custódio.
+
+	Módulo 3 Engine: 
+		Módulo consta no github como: moduloengine.c.
+
+	Módulo engine é responsável por ler o input do teclado a cada jogada e associar com uma
+ação, para então, mostrar a movimentação na tela, além de	inicializar e finalizar o uso da biblioteca ncurses.
+	Feito pelo integrante do grupo Yago Pablo Lourenço Vaz.
+
+
+				Realizações e participações no trabalho:
+
+	Pedro Ivo: Realizou o módulo 1 (tela) e realizou o relatório e as documentações necessárias para o trabalho, ajudando naquilo que era preciso durante a realização do trabalho.
+
+	Vitor Ribeiro: Realizou o módulo 2 (peças) além de ter ajudado todos os outros em cada módulo e realizou a documentação e o relatório.
+
+	Yago Lourenço: Realizou o módulo 3 (engine) além de ter coordenando o trabalho e também realizou o relatório e as documentações.
+
+
+						LEMBRETE:
+	Fazer a documentação falando sobre a arquitetura do código contendo os conceitos conteituais e fisicos, colocar os graficos do github em pdf além de ter também uma instrução dizendo como se compila o código no PC.
+	
