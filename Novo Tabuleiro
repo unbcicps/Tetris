@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <ncurses.h>
 char tabuleiro[15][27] ;
-
 void fazer_campo(){
 	int i;
         strcpy(tabuleiro[0],  "________________________");
@@ -26,8 +25,7 @@ void fazer_campo(){
 	
 	for(i=0;i<27;i++){
 		printf("%s", tabuleiro[i]);
-	   	printf("\n");
-	 
+	   	printf("\n")
 	}
 	
 }
