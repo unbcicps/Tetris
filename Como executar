@@ -1,0 +1,25 @@
+﻿/******************************************************************************************************************************************/
+		     Modo de Compilação do Trabalho Tetris
+
+1- Seu computador deve possuir o sistema operacional Ubuntu e nele deve estar baixado a biblioteca Ncurses;
+ /*Para instalar o ncurser via terminal é necessário somente digitar o comando 
+				 apt-get install ncurses
+	*/
+
+/******************************************************************************************************************************************/
+2- Após estes procedimentos, baixe os arquivo do trabalho Tetris via moodle e faça os seguintes passos no terminal. 
+Importante: Seguir todos os passos, respeitando todo tipo de símbolo utilizado, como por exemplo a '/'; 
+
+1 - Abra o terminal e então digite: cd meu_diretório/
+ 2 - meu_diretório/ cd Tetris/ 
+3 - meu_diretório/ Tetris/ make
+
+    E então a partir deste momento o programa será executado, após a utilização do comando "make". Após o termino do jogo, os testes serão mostrados na tela do terminal.
+/******************************************************************************************************************************************/
+
+Como Jogar : 
+	O jogo possui regras simples e de fácil compreensão .
+	O jogador deve usar as setas para movimentar os blocos , sendo possível realizar três ações : Direita , esquerda e para baixo. 
+	Quando pressionado o botão esquerdo o bloco irá se movimentar uma posição para a esquerda , quando pressionado o da direita o bloco irá movimentar uma posição para direita e quando for pressionado a seta para baixo o bloco irá cair até o fim do tabuleiro sendo fixado no mesmo.   
+ 	O jogo é composto de um objetivo simples , completar uma linha , quando uma linha fica completamente ocupada por peças o jogador aumenta sua pontuação, sendo que se esse objetivo não seja realizado , ao chegar em um determinada altura , o jogador receberá a punição de derrota , sendo informado com um “Game over” no terminal. 
+	Além disso, caso o jogador desista do jogo , ele pode pressionar a tecla Q que ele será ejetado da partida. Outra funcionalidade presente, é a função de “Pause”, quando pressionado a tecla P , o jogo imediatamente é interrompido e se conserva seu estado atual, pressionando mais uma vez a tecla , o jogo retorna ao estado que foi deixado. 
