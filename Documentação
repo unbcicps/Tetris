@@ -5,6 +5,8 @@ Compononentes do grupo:
 	Vitor Ribeiro Custodio – 15/0023502
 	Yago Pablo Lourenço Vaz – 15/0023928
 
+A estrutura utilizada na realização do trabalho foi Fila.
+
 PEÇAS : 
 
 -  O módulo peça é composto por 6 estruturas do tipo Struct e por 18 funções;
